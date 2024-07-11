@@ -22,7 +22,7 @@ const nextConfig = {
     dirs: ['.'],
   },
   poweredByHeader: false,
-  reactStrictMode: true,
+  reactStrictMode: false,
   experimental: {
     serverComponentsExternalPackages: ['@electric-sql/pglite'],
   },

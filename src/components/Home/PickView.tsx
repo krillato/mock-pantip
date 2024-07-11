@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import React from 'react'
+import Image from "next/image";
+import React from "react";
 
 function PickView() {
   const dataPantipPick = [
@@ -647,41 +647,11 @@ function PickView() {
         },
       ],
       timestamp: "1720593900000",
-    },
-    {
-      topic_id: 42832650,
-      title:
-        "Individual Awards of The 22nd Asian Women's U20 Volleyball Championship (น้องเฟิร์น ได้รางวัล)",
-      topic_type: 1,
-      created_time: "2024-07-09T13:54:32Z",
-      thumbnail_url:
-        "https://ptcdn.info/pick/588/000/000/sgczy011c5jd4t32MENdP-s.jpg",
-      views_count: 2955,
-      comments_count: 30,
-      votes_count: 3,
-      author: {
-        id: 170168,
-        name: "nongmoss",
-        avatar: {
-          original: "",
-          large: "https://ptcdn.info/images/avatar_member_default.png",
-          medium: "https://ptcdn.info/images/avatar_member_default.png",
-          small: "https://ptcdn.info/images/avatar_member_default.png",
-        },
-        slug: "/profile/170168",
-      },
-      tags: [
-        {
-          name: "วอลเลย์บอล",
-          slug: "วอลเลย์บอล",
-        },
-      ],
-      timestamp: "1720593000000",
-    },
+    },   
     {
       topic_id: 42833494,
       title:
-        "' ขายหัวเราะ ' ระหว่างพี่ต่าย กับ พี่นิค คุณชอบงานของใครมากกว่าและใครฮากวนโอ๊ยกว่ากัน (มีตัวอย่าง)",
+        `ขายหัวเราะ " ระหว่างพี่ต่าย กับ พี่นิค คุณชอบงานของใครมากกว่าและใครฮากวนโอ๊ยกว่ากัน (มีตัวอย่าง)"`,
       topic_type: 3,
       created_time: "2024-07-10T03:42:52Z",
       thumbnail_url:
@@ -812,7 +782,7 @@ function PickView() {
     {
       topic_id: 42833207,
       title:
-        'แบ่งปันเมนู "Homemade Mascapone cheese cake" หน้าไหม้แตก กินคู่กับ Blueberry sauce',
+       ` "แบ่งปันเมนู "Homemade Mascapone cheese cake" หน้าไหม้แตก กินคู่กับ Blueberry sauce"`,
       topic_type: 1,
       created_time: "2024-07-10T00:14:22Z",
       thumbnail_url:
@@ -843,66 +813,63 @@ function PickView() {
     },
   ];
   return (
-    <div className="w-full h-auto flex flex-col mt-10 md:w-[80%]  ">
-    <div className="bg-[#1f1d33] h-[70px] text-start items-start flex flex-col rounded-t-xl w-auto p-2">
-      <span className="items-start text-left flex justify-start text-[#FBC02D] pt-2 pl-2 font-bold">
+    <div className="w-full h-auto flex flex-col mt-10 md:w-4/5">
+    <div className="bg-[#1f1d33] h-[70px] flex flex-col items-start text-start rounded-t-xl w-auto p-2">
+      <span className="flex items-start justify-start pt-2 pl-2 text-left text-[#FBC02D] font-bold">
         Pantip Pick
       </span>
-      <span className="items-start text-left flex justify-start text-[#ffffff8a]  text-[12px] pl-2 font-bold">
+      <span className="flex items-start justify-start pl-2 text-left text-[#ffffff8a] text-[12px] font-bold">
         กระทู้คุณภาพคัดเลือกโดยทีมงาน Pantip
       </span>
     </div>
-
-    <div className="bg-[#353156] p-1 px-5 rounded-b-xl py-3 items-start w-full flex flex-col gap-5 justify-start  h-auto ">
-      {dataPantipPick?.map((item) => {
-        return (
-          <div
-            key={item?.topic_id}
-            className="border bg-[#484375] hover:!text-yellow-500 w-full overflow-auto text-white p-2 text-start items-start flex  gap-1 justify-start rounded-xl cursor-pointer hover:border-b-2 hover:shadow-lg hover:scale-105  transition delay-150 duration-300 ease-in-out"
-          >
-            {item?.thumbnail_url && (
-              <Image
-                src={`${item?.thumbnail_url}`}
-                alt={item?.title}
-                width={100}
-                height={100}
-                className="object-cover rounded-xl"
-              />
-            )}
-
-            <div className="flex ml-2 flex-col justify-start items-start text-left w-full">
-              <span className="font-normal line-clamp-2 text-[17px]  ">
-                {item?.title}
+  
+    <div className="bg-[#353156] p-1 px-5 py-3 flex flex-col items-start justify-start gap-5 rounded-b-xl w-full h-auto">
+      {dataPantipPick?.map((item) => (
+        <div
+          key={item?.topic_id}
+          className="border bg-[#484375] hover:text-yellow-500 w-full overflow-auto text-white p-2 flex items-start justify-start gap-1 text-start rounded-xl cursor-pointer hover:border-b-2 hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+        >
+          {item?.thumbnail_url && (
+            <Image
+              src={item?.thumbnail_url}
+              alt={item?.title}
+              width={100}
+              height={100}
+              className="object-cover rounded-xl"
+            />
+          )}
+          <div className="flex flex-col items-start justify-start text-left w-full ml-2">
+            <span className="font-normal text-[17px] line-clamp-2">
+              {item?.title}
+            </span>
+            {item?.tags && (
+              <span className="font-normal text-[10px] text-yellow-50 line-clamp-2">
+                {item?.tags[0]?.name}
               </span>
-              {item?.tags && (
-                <span className="font-normal line-clamp-2 text-[10px] text-yellow-50 ">
-                  {item?.tags[0]?.name}
+            )}
+            <div className="flex justify-between items-end w-full text-end">
+              <span className="font-normal text-[14px] text-yellow-50 line-clamp-2">
+                ผู้สร้าง {item?.author.name}
+              </span>
+              <div className="flex gap-3">
+                <span className="font-normal flex gap-1 text-[14px] text-[#e9e5f666] line-clamp-2">
+                  {IconView} {item?.comments_count}
                 </span>
-              )}
-
-              <div className="flex items-end text-end justify-between w-full">
-                <span className="font-normal line-clamp-2 text-[14px] text-yellow-50 ">
-                  ผู้สร้าง {item?.author.name}
+                <span className="font-normal flex gap-1 text-[14px] text-[#e9e5f666] line-clamp-2">
+                  {IconComment} {item?.views_count}
                 </span>
-                <div className="flex gap-3">
-                  <span className="font-normal flex gap-1 line-clamp-2 text-[14px] text-[#e9e5f666] ">
-                    {IconView} {item?.comments_count}
-                  </span>
-                  <span className="font-normal flex gap-1  line-clamp-2 text-[14px] text-[#e9e5f666] ">
-                    {IconComment} {item?.views_count}
-                  </span>
-                  <span className="font-normal flex gap-1  line-clamp-2 text-[14px] text-[#e9e5f666] ">
-                    {IconVote} {item?.votes_count}
-                  </span>
-                </div>{" "}
+                <span className="font-normal flex gap-1 text-[14px] text-[#e9e5f666] line-clamp-2">
+                  {IconVote} {item?.votes_count}
+                </span>
               </div>
             </div>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   </div>
-  )
+  
+  );
 }
 const IconComment = (
   <svg
@@ -975,6 +942,4 @@ const IconView = (
     />
   </svg>
 );
-export default PickView
-
-
+export default PickView;
